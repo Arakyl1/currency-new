@@ -1,0 +1,55 @@
+@mixin position-block($vertical, $horizont, $translate: null, $vertical-size: 0, $horizon-size: 0, $position: absolute) {
+    position: #{$position};
+    #{$vertical}: #{$vertical-size};
+    #{$horizont}: #{$horizon-size};
+    @if $translate {
+        transform: #{$translate};
+    }
+}
+@mixin standart-button($padding: null, $background: null) {
+    position: relative;
+    @if $padding {
+        padding: #{$padding};
+    }
+    @if  $background{
+        background: #{$background};
+    }
+    cursor: pointer;
+}
+@mixin min-max-height-width($min-h: null, $max-h: null, $min-w: null, $max-w: null) {
+    @each $size, $name in (($min-h, min-height), ($max-h, max-height), ($min-w, min-width), ($max-w, max-width)) {
+        @if  $size{
+            #{$name}: #{$size}
+        }
+    }
+}
+@mixin backgroun-image($image: null, $size: null, $repeat: null, $position: null, $color: null) {
+    $features: (
+      background-image: $image,
+      background-size: $size,
+      background-repeat: $repeat,
+      background-position: $position,
+      background-color: $color,
+    );
+    @each $name, $value in $features {
+        @if $value {
+            #{$name}: #{$value}
+        }
+    }
+    
+}
+@mixin border-main($width, $style, $color, $radius: null) {
+    border: #{$width}px #{$style} var(--col-#{$color});
+    @if $radius {
+        border-radius: var(--border-radius-#{$radius});
+    }
+}
+@mixin media-style($list) {
+    @each $size, $item in $list{
+        @media screen and (max-width: #{$size}px){
+            @each $property, $value in $item {
+                #{$property}: $value;
+            }
+        }
+    }
+}

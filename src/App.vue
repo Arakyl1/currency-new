@@ -1,26 +1,43 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app__wrap" ref="cont">
+    <a1-ftom-to-currense />
+    <o1window-pop-up/>
+    <s2-calculator/>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import A1FtomToCurrense from '@/components/main/A1-FtomToCurrense.vue'
+import O1windowPopUp from './components/other/O1windowPopUp.vue'
+import { store, updateActiveCalculator } from '@/store/store'
+import { InnerHeigth } from '@/OtherJS/InnerHeigth'
+import { ref, watch } from 'vue'
+import { toucheElemPosition } from '@/OtherJS/toucheElemPosition'
+import S2Calculator from './components/main/S2Calculator.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+store.windowHeigth = InnerHeigth()
+const cont = ref(null)
+const elem = toucheElemPosition(cont, { vector: true })
+
+watch(() => elem.vector, vector => {
+  if (vector === 1 && !store.activePopUp && !store.activeCalculator) {
+    console.log('active Calculator')
+    updateActiveCalculator()
   }
-}
+})
 </script>
 
 <style lang="scss">
+@import './styles/variables';
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to top, var(--col-black-1), #156767);
+  overflow: hidden;
+}
+.app__wrap{
+  position: relative;
+  height: 100vh;
+  width: 100vw;
 }
 </style>

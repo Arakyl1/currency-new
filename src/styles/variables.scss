@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+$color-list: (
+    black-1: #030E1E,
+    black-2: #141414,
+    blue-1: #1074EB,
+    blue-2: #438FFF,
+    yellow-1: #FF9900,
+    yellow-2: #D5A278,
+    red-1: #ef5959,
+    green-1: #398a81,
+    gray-1: #434343,
+    gray-2: #C9C9C9,
+    gray-3: #F7F7F7,
+    white-1: #FFFFFF
+);
+
+*,
+*::before,
+*::after{
+    font-family: 'Poppins', sans-serif;
+    color: var( --col-black-1);
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: var(--text-line-height);
+}
+input, input:hover, input:visited, input:focus, button {
+    outline: none;
+    border: none;
+}
+ul,li{
+    list-style: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    appearance: none;
+}
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+body{
+    overflow: hidden;
+}
+:root {
+    --text-line-height: 1.2;
+    --border-radius-50per: 50%;
+    @each $name, $color in $color-list {
+        --col-#{$name}: #{$color};
+    }
+    @each $name in (3, 5, 12, 15) {
+        --border-radius-#{$name}: #{$name}px;
+    }
+    --quanity-colums-base-container: 3;
+}
+
+// font size
+@each $name, $size in (xs: 0.75, s: 0.875, m: 1, l: 1.125, xl: 1.25, 2xl: 1.5, 3xl: 2.25, 4xl: 4) {
+    .--t-#{$name}{
+        font-size: #{$size}rem;
+    }
+}
+// font weight
+@each $size in (500, 600, 700) {
+    .--#{$size}{
+        font-weight: #{$size};
+    }
+}
+// style color
+@each $name, $color in $color-list {
+    .--c-#{$name}{
+        color: var(--col-#{$name});
+    }
+}
+// background color
+@each $name, $color in $color-list {
+    .--b-c-#{$name}{
+        background-color: var(--col-#{$name});
+    }
+}
+.--b-none{
+    background: none;
+}
+.--b-o-br-none,.--b-o-br-none:hover,.--b-o-br-none:focus{
+    outline: none;
+    border: none;
+    background: none;
+}
+.--cur-img{
+    @include min-max-height-width(24px, 24px, 24px, 24px);
+    @include border-main(2px, solid, white-1, 12);
+    background-color: var(--col-white-1);
+}
+// display style
+@each $name in (flex, inline, inline-block, grid) {
+    .--#{$name}{
+        display: #{$name};
+    }
+}
+
+  .spacer{
+    &--150{
+        padding-top: 1.5rem;
+    }
+    &--200{
+        padding-top: 2rem;
+    }
+  }
