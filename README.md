@@ -1,7 +1,7 @@
 # currency-new
 
-## Follow this link to see the result
-[click](https://adorable-rolypoly-21600c.netlify.app/)
+## View the result
+click hear[https://adorable-rolypoly-21600c.netlify.app/](https://adorable-rolypoly-21600c.netlify.app/)
 
 ## Project setup
 ```
