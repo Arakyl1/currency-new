@@ -1,5 +1,8 @@
 # currency-new
 
+## Follow this link to see the result
+[click](https://adorable-rolypoly-21600c.netlify.app/)
+
 ## Project setup
 ```
 npm install
