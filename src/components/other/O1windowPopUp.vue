@@ -1,9 +1,9 @@
 <template>
 <div class="o1" :style="{ transform: `translateY(${transformPopUp})`}">
-  <div class="o1__control-line" ref="cont">
+  <div class="o1__con --flex">
+    <div class="o1__control-line" ref="cont">
     <span class="--b-c-gray-2" ></span>
   </div>
-  <div class="o1__con --flex">
   <o2search-form @search="(event) => activeSearch = event"/>
   <div class="spacer--150"></div>
     <div class="o1__common-base"
@@ -90,11 +90,11 @@ watch(() => elem.started, started => {
     transform: translateY(-100%);
   }
   &__control-line{
-    max-width: 40%;
+    width: 40%;
     margin: 0 auto;
     padding: 1rem 0;
     & > span{
-      display: inline-block;
+      display: block;
       height: 4px;
       width: 100%;
       border-radius: 2px;
