@@ -7,7 +7,7 @@
   <o2search-form @search="(event) => activeSearch = event"/>
   <div class="spacer--150"></div>
     <div class="o1__common-base"
-    :class="{ 'active--search': activeSearch }">
+    :class="{ 'active--search': activeSearch && store.viewport.width < 1024 }">
       <h3 class="o1__title --c-gray-2 --t-s">Common bases</h3>
       <ul class="o1__list-base --flex" @click="hidePopUp($event)">
         <li class="o1__item __base --flex" v-for="item in basicCurrencies" :key="item" :data-currense="item">
@@ -53,8 +53,8 @@ const activeSearch = ref(false)
 const basicCurrencies = ref(['eur', 'byn', 'azn', 'rub', 'usd', 'gel', 'kmf', 'sar'])
 
 const transformPopUp = computed(() => store.activePopUp && elem.dy > 0 && elem.started
-  ? `calc(${(-100 + (elem.dy / (store.windowHeigth / 100)))}% + 10px)`
-  : store.activePopUp && (-100 + (elem.dy / (store.windowHeigth / 100))) < -50
+  ? `calc(${(-100 + (elem.dy / (store.viewport.height / 100)))}% + 10px)`
+  : store.activePopUp && (-100 + (elem.dy / (store.viewport.height / 100))) < -50
     ? 'calc(-100% + 10px)'
     : 0)
 // methods
@@ -80,7 +80,7 @@ watch(() => elem.started, started => {
   @include position-block(top, left, translateY(0), 100%);
   width: 100vw;
   height: 100vh;
-  transition: transform ease-out 0.2s;
+  transition: transform ease-out 0.15s;
   transition: height ease-in-out 0;
   background: linear-gradient(to top, var(--col-black-1), #156767);
   border-top-left-radius: 10px;

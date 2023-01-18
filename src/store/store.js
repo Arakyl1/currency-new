@@ -1,5 +1,4 @@
 import Api from '@/API/Api'
-import { RegExp } from 'core-js'
 import { computed, reactive, watch } from 'vue'
 
 const getDate = () => Api.GetCurrencies()
@@ -13,8 +12,7 @@ export const store = reactive({
   activeCurrense: '',
   activePopUp: false,
   activeCalculator: false,
-  windowWidth: 0,
-  windowHeigth: 0,
+  viewport: window.visualViewport,
   currency: { from: 'eur', to: 'byn' },
   currencyValue: null,
   value: { from: 1, to: 1 }

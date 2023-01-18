@@ -10,12 +10,11 @@
 import A1FtomToCurrense from '@/components/main/A1-FtomToCurrense.vue'
 import O1windowPopUp from './components/other/O1windowPopUp.vue'
 import { store, updateActiveCalculator } from '@/store/store'
-import { InnerHeigth } from '@/OtherJS/InnerHeigth'
 import { ref, watch } from 'vue'
 import { toucheElemPosition } from '@/OtherJS/toucheElemPosition'
 import S2Calculator from './components/main/S2Calculator.vue'
 
-store.windowHeigth = InnerHeigth()
+console.log(store.viewport)
 const cont = ref(null)
 const elem = toucheElemPosition(cont, { vector: true })
 
